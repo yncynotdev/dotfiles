@@ -34,6 +34,7 @@ alias dot="cd ~/.dotfiles"
 export PATH="$PATH:/opt/nvim/"
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$(go env GOPATH)/bin
+export PATH="$HOME/.local/bin/fastapi"
 
 # Fastfetch
 if [ ! "$TMUX" ]; then

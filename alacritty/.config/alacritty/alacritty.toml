@@ -9,6 +9,3 @@ opacity = 0.8
 [font]
 normal = { family = "FiraCode Nerd Font", style = "Regular"}
 size = 12.5
-
-[colors]
-cursor = { text="#faf4ed", cursor = "#d7827e"}

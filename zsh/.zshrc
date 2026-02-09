@@ -35,5 +35,8 @@ source <(fzf --zsh)
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$(go env GOPATH)/bin
 
+# #fastapi
+export PATH="$HOME/.local/bin:$PATH"
+
 eval "$(direnv hook zsh)"
 fastfetch

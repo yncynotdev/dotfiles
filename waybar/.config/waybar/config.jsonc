@@ -8,8 +8,8 @@
     // Choose the order of the modules
     "margin-top": 10,
     "margin-bottom": 0,
-    "margin-left": 20,
-    "margin-right": 20,
+    "margin-left": 13,
+    "margin-right": 13,
 
     "modules-left": [
         "hyprland/workspaces",

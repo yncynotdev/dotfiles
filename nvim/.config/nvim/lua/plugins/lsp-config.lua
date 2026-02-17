@@ -164,6 +164,7 @@ return {
       vim.lsp.enable("cssls")
       vim.lsp.enable("eslint")
       vim.lsp.enable("eslint_d")
+      vim.lsp.enable("gdscript")
       vim.lsp.enable("gopls")
       vim.lsp.enable("html")
       vim.lsp.enable("jsonls")

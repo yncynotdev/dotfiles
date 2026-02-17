@@ -26,3 +26,7 @@ vim.api.nvim_create_autocmd("ColorScheme", {
   end,
 })
 
+-- local projectfile = vim.fn.getcwd() .. '/project.godot'
+-- if projectfile then
+--     vim.fn.serverstart './godothost'
+-- end

@@ -4,17 +4,28 @@
 -- @return {}
 
 return {
-  "nvim-treesitter/nvim-treesitter",
-  branch = "master",
-  lazy = false,
-  build = ":TSUpdate",
-  config = function()
-    local configs = require("nvim-treesitter.configs")
+    {
+        "nvim-treesitter/nvim-treesitter",
+        branch = "master",
+        lazy = false,
+        build = ":TSUpdate",
+        config = function()
+            local configs = require("nvim-treesitter.configs")
 
-    configs.setup({
-      auto_install = true,
-      highlight = { enable = true },
-      indent = { enable = true }
-    })
-  end
+            configs.setup({
+                -- ensure_installed = {
+                --     "gdscript",
+                --     "godot_resource",
+                --     "gd_shader"
+                -- },
+                auto_install = true,
+                highlight = { enable = true },
+                indent = { enable = false }
+            })
+        end
+    },
+    {
+        "habamax/vim-godot",
+        event = "VimEnter"
+    }
 }

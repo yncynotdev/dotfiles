@@ -36,9 +36,17 @@ export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$(go env GOPATH)/bin
 
 # bun
-export PATH="/home/nyanya/.bun/bin:$PATH"
+export PATH="$HOME/.bun/bin:$PATH"
 
-# #fastapi
+# flutter
+export PATH="$PATH:$HOME/flutter/bin"
+
+# android
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools:$PATH:$ANDROID_HOME/cmdline-tools/bin
+export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools
+
+# fastapi
 export PATH="$HOME/.local/bin:$PATH"
 
 eval "$(direnv hook zsh)"

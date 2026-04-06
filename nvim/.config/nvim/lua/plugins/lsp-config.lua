@@ -76,6 +76,9 @@ return {
       vim.lsp.config("postgrestools", {
         capabilities = capabilities,
       })
+      vim.lsp.config("rust_analyzer", {
+        capabilities = capabilities,
+      })
       vim.lsp.config("stylua", {
         capabilities = capabilities,
       })
@@ -175,6 +178,7 @@ return {
       vim.lsp.enable("pgformatter")
       vim.lsp.enable("postgrestools")
       vim.lsp.enable("prettier")
+      vim.lsp.enable("rust_analyzer")
       vim.lsp.enable("sqlls")
       vim.lsp.enable("stylua")
       vim.lsp.enable("tailwindcss")

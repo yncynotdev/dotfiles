@@ -1,0 +1,11 @@
+[general]
+import = ["~/.config/alacritty/rose-pine-dawn.toml"]
+
+[window]
+padding = { x = 5, y = 5 }
+decorations = "none"
+opacity = 0.8
+
+[font]
+normal = { family = "FiraCode Nerd Font", style = "Regular"}
+size = 12.5

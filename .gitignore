@@ -1,0 +1,5 @@
+*.env
+*.log
+tmux/.config/tmux/plugins/*
+
+node_modules

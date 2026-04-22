@@ -46,6 +46,9 @@ export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/cmdline-tools:$PATH:$ANDROID_HOME/cmdline-tools/bin
 export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools
 
+# cargo
+export PATH=$PATH:$HOME/.cargo/bin/
+
 # fastapi
 export PATH="$HOME/.local/bin:$PATH"
 #eval "$(direnv hook zsh)"

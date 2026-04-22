@@ -48,6 +48,9 @@ export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/plat
 
 # fastapi
 export PATH="$HOME/.local/bin:$PATH"
+#eval "$(direnv hook zsh)"
 
-eval "$(direnv hook zsh)"
 fastfetch
+
+# bun completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"

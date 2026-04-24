@@ -1,14 +1,20 @@
 [appearance]
 
-primary_color = "#eb6f92"
-success_color = "#a6e3a1"
+font_name = "DepartureMono Nerd Font"
+style = "Solid"
+
+success_color = "#56949f"
 text_color = "#575279"
 
-workspace_colors = [ "#eb6f92", "#eb6f92"]
+workspace_colors = [ "#f2e9e1", "#e0def4", "#c4a7e7" ]
+
+[appearance.primary_color]
+base = "#faf4ed"
+text = "#575279"
 
 [appearance.danger_color]
-base = "#ebbcba"
-weak = "#d7827e"
+base = "#f38ba8"
+weak = "#f6c177"
 
 [appearance.background_color]
 base = "#faf4ed"
@@ -16,5 +22,4 @@ weak = "#fffaf3"
 strong = "#f2e9e1"
 
 [appearance.secondary_color]
-base = "#11111b"
-strong = "#1b1b25"
+base = "#fffaf3"

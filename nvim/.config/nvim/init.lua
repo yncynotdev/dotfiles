@@ -12,6 +12,8 @@ vim.pack.add({
 	"https://github.com/neovim/nvim-lspconfig",
 	"https://github.com/nvimtools/none-ls.nvim",
 	"https://github.com/nvimtools/none-ls-extras.nvim",
+	"https://github.com/rafamadriz/friendly-snippets",
+	{ src = "https://github.com/saghen/blink.cmp", version = "v1" },
 })
 
 -- Default Keymaps
@@ -110,10 +112,13 @@ null_ls.setup({
 	sources = {
 		null_ls.builtins.formatting.stylua,
 		null_ls.builtins.formatting.prettier,
+		-- require("none-ls.diagnostics.eslint_d")
 		require("none-ls.diagnostics.eslint"),
 	},
 })
 vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
+vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
+vim.keymap.set({ "n" }, "<leader>ca", vim.lsp.buf.code_action, {})
 
 -- LSP's
 vim.lsp.enable({
@@ -129,6 +134,11 @@ vim.lsp.enable({
 	"tailwindcss",
 	"ts_ls",
 })
+
+vim.lsp.config("tailwindcss", {
+	filetypes = { "html", "css", "scss" },
+})
+
 -- vim.lsp.enable({ "vtsls", "vue_ls" })
 -- vim.lsp.enable("cssls")
 -- vim.lsp.enable("eslint")

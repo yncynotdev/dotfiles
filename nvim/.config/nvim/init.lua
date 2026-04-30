@@ -14,6 +14,7 @@ vim.pack.add({
 	"https://github.com/nvimtools/none-ls-extras.nvim",
 	"https://github.com/rafamadriz/friendly-snippets",
 	{ src = "https://github.com/saghen/blink.cmp", version = "v1" },
+	"https://github.com/saghen/blink.lib",
 })
 
 -- Default Keymaps
@@ -120,13 +121,17 @@ vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
 vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
 vim.keymap.set({ "n" }, "<leader>ca", vim.lsp.buf.code_action, {})
 
+-- auto completes
+local cmp = require("blink.cmp")
+cmp.build():wait(60000)
+cmp.setup()
+
 -- LSP's
 vim.lsp.enable({
 	"lua_ls",
 	"vtsls",
 	"vue_ls",
 	"eslint",
-	"gdscript",
 	"html",
 	"jsonls",
 	"prettier",

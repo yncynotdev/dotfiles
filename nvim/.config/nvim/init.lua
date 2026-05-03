@@ -15,12 +15,14 @@ vim.pack.add({
 	"https://github.com/rafamadriz/friendly-snippets",
 	{ src = "https://github.com/saghen/blink.cmp", version = "v1" },
 	"https://github.com/saghen/blink.lib",
+	"https://github.com/L3MON4D3/LuaSnip",
 })
 
 -- Default Keymaps
 vim.g.mapleader = " "
 vim.keymap.set("i", "jj", "<Esc>", { noremap = true, silent = true })
 
+-- Vim Config
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.tabstop = 2
@@ -97,9 +99,6 @@ require("nvim-ts-autotag").setup({
 		enable_rename = true, -- Auto rename pairs of tags
 		enable_close_on_slash = false, -- Auto close on trailing </
 	},
-	-- Also override individual filetype configs, these take priority.
-	-- Empty by default, useful if one of the "opts" global settings
-	-- doesn't work well in a specific filetype
 	per_filetype = {
 		["html"] = {
 			enable_close = false,
@@ -113,7 +112,6 @@ null_ls.setup({
 	sources = {
 		null_ls.builtins.formatting.stylua,
 		null_ls.builtins.formatting.prettier,
-		-- require("none-ls.diagnostics.eslint_d")
 		require("none-ls.diagnostics.eslint"),
 	},
 })
@@ -124,47 +122,66 @@ vim.keymap.set({ "n" }, "<leader>ca", vim.lsp.buf.code_action, {})
 -- auto completes
 local cmp = require("blink.cmp")
 cmp.build():wait(60000)
-cmp.setup()
+cmp.setup({
+	snippets = { preset = "luasnip" },
+	sources = {
+		default = { "lsp", "path", "snippets", "buffer" },
+	},
+})
+local capabilities = require("blink.cmp").get_lsp_capabilities({
+	textDocument = { completion = { completionItem = { snippetSupport = false } } },
+})
 
 -- LSP's
 vim.lsp.enable({
 	"lua_ls",
-	"vtsls",
-	"vue_ls",
 	"eslint",
+	"gdscript",
+	"gopls",
 	"html",
 	"jsonls",
+	"postgrestools",
 	"prettier",
+	"rust_analyzer",
 	"stylua",
 	"tailwindcss",
 	"ts_ls",
+	"vtsls",
+	"vue_ls",
+	"yamlls",
 })
 
+-- vim.lsp.config("tailwindcss", {
+-- 	filetypes = { "html", "css", "scss" },
+-- })
+
+vim.lsp.config("lua_ls", {
+	capabilities = capabilities,
+})
+vim.lsp.config("gdscript", {
+	capabilities = capabilities,
+})
+vim.lsp.config("gopls", {
+	capabilities = capabilities,
+})
+vim.lsp.config("postgrestools", {
+	capabilities = capabilities,
+})
+vim.lsp.config("rust_analyzer", {
+	capabilities = capabilities,
+})
 vim.lsp.config("tailwindcss", {
-	filetypes = { "html", "css", "scss" },
+	capabilities = capabilities,
 })
-
--- vim.lsp.enable({ "vtsls", "vue_ls" })
--- vim.lsp.enable("cssls")
--- vim.lsp.enable("eslint")
--- vim.lsp.enable("gdscript")
--- vim.lsp.enable("gopls")
--- vim.lsp.enable("html")
--- vim.lsp.enable("jsonls")
--- vim.lsp.enable("lua_ls")
--- vim.lsp.enable("markdown-oxide")
--- vim.lsp.enable("markdownlint")
--- vim.lsp.enable("omnisharp")
--- vim.lsp.enable("pgformatter")
--- vim.lsp.enable("postgrestools")
--- vim.lsp.enable("prettier")
--- vim.lsp.enable("rust_analyzer")
--- vim.lsp.enable("sqlls")
--- vim.lsp.enable("stylua")
--- vim.lsp.enable("tailwindcss")
--- vim.lsp.enable("tombi")
--- vim.lsp.enable("ts_ls")
--- vim.lsp.enable("yamlls")
--- vim.lsp.enable("yamlfix")
--- vim.lsp.enable("yamlfmt")
--- vim.lsp.enable("yamllint")
+vim.lsp.config("ts_ls", {
+	capabilities = capabilities,
+})
+vim.lsp.config("yamlls", {
+	capabilities = capabilities,
+})
+vim.lsp.config("vue_ls", {
+	capabilities = capabilities,
+})
+vim.lsp.config("vtsls", {
+	capabilities = capabilities,
+})

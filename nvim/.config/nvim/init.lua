@@ -151,37 +151,16 @@ vim.lsp.enable({
 	"yamlls",
 })
 
--- vim.lsp.config("tailwindcss", {
--- 	filetypes = { "html", "css", "scss" },
--- })
+vim.lsp.config("*", { capabilities = capabilities })
 
-vim.lsp.config("lua_ls", {
-	capabilities = capabilities,
-})
-vim.lsp.config("gdscript", {
-	capabilities = capabilities,
-})
-vim.lsp.config("gopls", {
-	capabilities = capabilities,
-})
-vim.lsp.config("postgrestools", {
-	capabilities = capabilities,
-})
-vim.lsp.config("rust_analyzer", {
-	capabilities = capabilities,
-})
-vim.lsp.config("tailwindcss", {
-	capabilities = capabilities,
-})
-vim.lsp.config("ts_ls", {
-	capabilities = capabilities,
-})
-vim.lsp.config("yamlls", {
-	capabilities = capabilities,
-})
-vim.lsp.config("vue_ls", {
-	capabilities = capabilities,
-})
-vim.lsp.config("vtsls", {
-	capabilities = capabilities,
-})
+-- vim.lsp.config("lua_ls")
+-- vim.lsp.config("gdscript")
+-- vim.lsp.config("gopls")
+-- vim.lsp.config("postgrestools")
+-- vim.lsp.config("rust_analyzer")
+-- vim.lsp.config("tailwindcss")
+-- vim.lsp.config("ts_ls")
+-- vim.lsp.config("yamlls")
+-- vim.lsp.config("vue_ls")
+-- vim.lsp.config("vtsls")
+--

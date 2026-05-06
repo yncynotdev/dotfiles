@@ -16,6 +16,8 @@ vim.pack.add({
 	{ src = "https://github.com/saghen/blink.cmp", version = "v1" },
 	"https://github.com/saghen/blink.lib",
 	"https://github.com/L3MON4D3/LuaSnip",
+	"https://github.com/stevearc/conform.nvim",
+	"https://github.com/mfussenegger/nvim-lint",
 })
 
 -- Default Keymaps
@@ -106,19 +108,50 @@ require("nvim-ts-autotag").setup({
 	},
 })
 
--- none ls
-local null_ls = require("null-ls")
-null_ls.setup({
-	sources = {
-		null_ls.builtins.formatting.stylua,
-		null_ls.builtins.formatting.prettier,
-    null_ls.builtins.formatting.biome,
-		-- require("none-ls.diagnostics.eslint"),
+-- formatters
+require("conform").setup({
+	event = { "BufReadPre", "BufNewFile" },
+	formatters_by_ft = {
+		lua = { "stylua" },
+		javascript = { "biome", "oxfmt", "prettier" },
+		typescript = { "biome", "oxfmt", "prettier" },
+		javascriptreact = { "biome", "oxfmt", "prettier" },
+		typescriptreact = { "biome", "oxfmt", "prettier" },
+		vue = { "biome", "oxfmt", "prettier" },
+	},
+	formatters = {
+		biome = { require_cwd = true },
+	},
+	format_on_save = {
+		-- These options will be passed to conform.format()
+		timeout_ms = 500,
+		lsp_format = "fallback",
+	},
+	default_format_opts = {
+		stop_after_first = true,
 	},
 })
-vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
+
+vim.keymap.set("n", "<leader>gf", function()
+	require("conform").format({
+		lsp_fallback = true,
+		async = false,
+		timeout_ms = 500,
+	})
+end)
+
+-- vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
 vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
 vim.keymap.set({ "n" }, "<leader>ca", vim.lsp.buf.code_action, {})
+
+-- linters
+require("lint").linters_by_ft = {
+	javascript = { "biome", "oxlint" },
+	typescript = { "biome", "oxlint" },
+	javascriptreact = { "biome", "oxlint" },
+	typescriptreact = { "biome", "oxlint" },
+	vue = { "biome", "oxlint" },
+}
 
 -- auto completes
 local cmp = require("blink.cmp")
@@ -133,15 +166,20 @@ local capabilities = require("blink.cmp").get_lsp_capabilities({
 	textDocument = { completion = { completionItem = { snippetSupport = false } } },
 })
 
+-- snippets
+require("luasnip.loaders.from_vscode").lazy_load()
+
 -- LSP's
 vim.lsp.enable({
 	"lua_ls",
-  "biome",
+	"biome",
 	"eslint",
 	"gdscript",
 	"gopls",
 	"html",
 	"jsonls",
+	"oxfmt",
+	"oxlint",
 	"postgrestools",
 	"prettier",
 	"rust_analyzer",
@@ -155,14 +193,58 @@ vim.lsp.enable({
 
 vim.lsp.config("*", { capabilities = capabilities })
 
--- vim.lsp.config("lua_ls")
--- vim.lsp.config("gdscript")
--- vim.lsp.config("gopls")
--- vim.lsp.config("postgrestools")
--- vim.lsp.config("rust_analyzer")
--- vim.lsp.config("tailwindcss")
--- vim.lsp.config("ts_ls")
--- vim.lsp.config("yamlls")
--- vim.lsp.config("vue_ls")
--- vim.lsp.config("vtsls")
---
+local vue_language_server_path = "~/.bun/install/global/node_modules/@vue/language-server"
+local tsserver_filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" }
+local vue_plugin = {
+	name = "@vue/typescript-plugin",
+	location = vue_language_server_path,
+	languages = { "vue" },
+	configNamespace = "typescript",
+}
+local vtsls_config = {
+	settings = {
+		vtsls = {
+			tsserver = {
+				globalPlugins = {
+					vue_plugin,
+				},
+			},
+		},
+	},
+	filetypes = tsserver_filetypes,
+}
+
+local vue_ls_config = {
+	on_init = function(client)
+		client.handlers["tsserver/request"] = function(_, result, context)
+			local clients = vim.lsp.get_clients({ bufnr = context.bufnr, name = "vtsls" })
+			if #clients == 0 then
+				vim.notify(
+					"Could not find `vtsls` lsp client, `vue_ls` would not work without it.",
+					vim.log.levels.ERROR
+				)
+				return
+			end
+			local ts_client = clients[1]
+
+			local param = unpack(result)
+			local id, command, payload = unpack(param)
+			ts_client:exec_cmd({
+				title = "vue_request_forward", -- You can give title anything as it's used to represent a command in the UI, `:h Client:exec_cmd`
+				command = "typescript.tsserverRequest",
+				arguments = {
+					command,
+					payload,
+				},
+			}, { bufnr = context.bufnr }, function(_, r)
+				local response_data = { { id, r.body } }
+				---@diagnostic disable-next-line: param-type-mismatch
+				client:notify("tsserver/response", response_data)
+			end)
+		end
+	end,
+}
+
+-- nvim 0.11 or above
+vim.lsp.config("vtsls", vtsls_config)
+vim.lsp.config("vue_ls", vue_ls_config)

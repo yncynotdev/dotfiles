@@ -18,11 +18,13 @@ vim.pack.add({
 	"https://github.com/L3MON4D3/LuaSnip",
 	"https://github.com/stevearc/conform.nvim",
 	"https://github.com/mfussenegger/nvim-lint",
+	"https://github.com/vyfor/cord.nvim",
 })
 
 -- Default Keymaps
 vim.g.mapleader = " "
 vim.keymap.set("i", "jj", "<Esc>", { noremap = true, silent = true })
+vim.keymap.set("n", "gl", vim.diagnostic.open_float)
 
 -- Vim Config
 vim.o.number = true
@@ -185,9 +187,6 @@ vim.lsp.enable({
 	"rust_analyzer",
 	"stylua",
 	"tailwindcss",
-	"ts_ls",
-	"vtsls",
-	"vue_ls",
 	"yamlls",
 })
 
@@ -214,37 +213,23 @@ local vtsls_config = {
 	filetypes = tsserver_filetypes,
 }
 
-local vue_ls_config = {
-	on_init = function(client)
-		client.handlers["tsserver/request"] = function(_, result, context)
-			local clients = vim.lsp.get_clients({ bufnr = context.bufnr, name = "vtsls" })
-			if #clients == 0 then
-				vim.notify(
-					"Could not find `vtsls` lsp client, `vue_ls` would not work without it.",
-					vim.log.levels.ERROR
-				)
-				return
-			end
-			local ts_client = clients[1]
-
-			local param = unpack(result)
-			local id, command, payload = unpack(param)
-			ts_client:exec_cmd({
-				title = "vue_request_forward", -- You can give title anything as it's used to represent a command in the UI, `:h Client:exec_cmd`
-				command = "typescript.tsserverRequest",
-				arguments = {
-					command,
-					payload,
-				},
-			}, { bufnr = context.bufnr }, function(_, r)
-				local response_data = { { id, r.body } }
-				---@diagnostic disable-next-line: param-type-mismatch
-				client:notify("tsserver/response", response_data)
-			end)
-		end
-	end,
+local ts_ls_config = {
+	init_options = {
+		plugins = {
+			vue_plugin,
+		},
+	},
+	filetypes = tsserver_filetypes,
 }
+
+-- If you are on most recent `nvim-lspconfig`
+local vue_ls_config = {}
 
 -- nvim 0.11 or above
 vim.lsp.config("vtsls", vtsls_config)
 vim.lsp.config("vue_ls", vue_ls_config)
+vim.lsp.config("ts_ls", ts_ls_config)
+vim.lsp.enable({ "vtsls", "vue_ls" })
+
+-- Flex on Discord that you use Neovim
+require("cord").setup()

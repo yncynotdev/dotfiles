@@ -1,18 +1,16 @@
-@define-color base #faf4ed;
-@define-color surface #fffaf3;
-@define-color overlay #f2e9e1;
-@define-color text #575279;
-@define-color rose #d7827e;
-@define-color love #eb6f92;
+/* @import "./rose-pine.css"; */
+/* @import "./rose-pine-moon.css"; */
+@import "./rose-pine-dawn.css";
 
 * {
   /* `otf-font-awesome` is required to be installed for icons */
-  font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+  font-family: 'DepartureMono Nerd Font', FontAwesome, Roboto, Helvetica, Arial, sans-serif;
   font-size: 13px;
 }
 
 window#waybar {
-  background-color: transparent;
+  /* background-color: transparent; */
+  background-color: @base;
   /* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
   color: @text;
   transition-property: background-color;
@@ -34,12 +32,19 @@ window#waybar.solo {
 */
 
 window#waybar.termite {
-  background-color: #3f3f3f;
+  background-color: @base;
 }
 
 window#waybar.chromium {
   background-color: #000000;
   border: none;
+}
+
+.modules-left,
+.modules-right,
+.modules-center {
+  background-color: @surface;
+  border-radius: 10px;
 }
 
 button {
@@ -58,13 +63,13 @@ button:hover {
 
 /* you can set a style on hover for any module like this */
 #pulseaudio:hover {
-  background-color: #a37800;
+  background: rgba(0, 0, 0, 0.2);
 }
 
 #workspaces button {
-  padding: 0 5px;
+  padding: 0 7px;
   background-color: transparent;
-  color: @text;
+  color: @pine;
 }
 
 #workspaces button:hover {
@@ -72,12 +77,8 @@ button:hover {
 }
 
 #workspaces button.focused {
-  background-color: #64727d;
+  background-color: @base;
   box-shadow: inset 0 -3px #ffffff;
-}
-
-#workspaces button.urgent {
-  background-color: #eb4d4b;
 }
 
 #mode {
@@ -91,11 +92,34 @@ button:hover {
 #network,
 #pulseaudio,
 #workspaces {
-  padding-left: 20px;
-  padding-right: 20px;
-  background-color: @base;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
   color: @text;
-  border-radius: 50px;
+}
+
+#battery {
+  color: @love;
+  border-left: 2px solid @love;
+}
+
+#memory {
+  color: @gold;
+  border-left: 2px solid @gold;
+}
+
+#network {
+  color: @foam;
+  border-left: 2px solid @foam;
+}
+
+#pulseaudio {
+  color: @iris;
+  border-left: 2px solid @iris;
+}
+
+#clock {
+  color: @text;
 }
 
 #window,
@@ -115,21 +139,20 @@ button:hover {
 
 #battery.charging,
 #battery.plugged {
-  color: #faf4ed;
-  background-color: @love;
+  color: @rose;
 }
 
 @keyframes blink {
   to {
-    background-color: #faf4ed;
-    color: #286983;
+    background-color: @gold;
+    color: @base;
   }
 }
 
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
-  background-color: #ea9d34;
-  color: #faf4ed;
+  background-color: @base;
+  color: @text;
   animation-name: blink;
   animation-duration: 0.5s;
   animation-timing-function: steps(12);
@@ -137,10 +160,6 @@ button:hover {
   animation-direction: alternate;
 }
 
-#temperature.critical {
-  background-color: #ea9d34;
-  border-radius: 50px;
-}
 
 /* #privacy { */
 /*   padding: 0; */

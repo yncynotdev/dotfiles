@@ -57,3 +57,7 @@ fastfetch
 
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Added by LM Studio CLI tool (lms)
+export PATH="$PATH:/home/cy/.lmstudio/bin"

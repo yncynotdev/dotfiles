@@ -19,6 +19,7 @@ vim.pack.add({
 	"https://github.com/stevearc/conform.nvim",
 	"https://github.com/mfussenegger/nvim-lint",
 	"https://github.com/vyfor/cord.nvim",
+	"https://github.com/lukas-reineke/indent-blankline.nvim",
 })
 
 -- Default Keymaps
@@ -115,6 +116,7 @@ require("conform").setup({
 	event = { "BufReadPre", "BufNewFile" },
 	formatters_by_ft = {
 		lua = { "stylua" },
+		gdscript = { "gdscript-formatter" },
 		javascript = { "biome", "oxfmt", "prettier" },
 		typescript = { "biome", "oxfmt", "prettier" },
 		javascriptreact = { "biome", "oxfmt", "prettier" },
@@ -230,6 +232,15 @@ vim.lsp.config("vtsls", vtsls_config)
 vim.lsp.config("vue_ls", vue_ls_config)
 vim.lsp.config("ts_ls", ts_ls_config)
 vim.lsp.enable({ "vtsls", "vue_ls" })
+
+-- Godot configs LSP
+local godotProjectFile = vim.fn.getcwd() .. "/project.godot"
+if godotProjectFile then
+	vim.fn.serverstart("./godothost")
+end
+
+-- Better Indents
+require("ibl").setup()
 
 -- Flex on Discord that you use Neovim
 require("cord").setup()

@@ -8,6 +8,7 @@ vim.pack.add({
 	"https://github.com/nvim-mini/mini.icons",
 	"https://github.com/nvim-mini/mini.pairs",
 	"https://github.com/nvim-mini/mini.comment",
+	"https://github.com/nvim-mini/mini.icons",
 	"https://github.com/windwp/nvim-ts-autotag",
 	"https://github.com/neovim/nvim-lspconfig",
 	"https://github.com/nvimtools/none-ls.nvim",

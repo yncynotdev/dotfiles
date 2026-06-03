@@ -177,8 +177,10 @@ require("luasnip.loaders.from_vscode").lazy_load()
 vim.lsp.enable({
 	"lua_ls",
 	"biome",
+	"csskit",
 	"eslint",
 	"gdscript",
+	"gdshader_lsp",
 	"gopls",
 	"html",
 	"jsonls",

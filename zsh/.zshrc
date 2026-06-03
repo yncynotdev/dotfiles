@@ -42,9 +42,9 @@ export PATH="$HOME/.bun/bin:$PATH"
 export PATH="$PATH:$HOME/flutter/bin"
 
 # android
-export ANDROID_HOME=$HOME/Android/Sdk
-export PATH=$PATH:$ANDROID_HOME/cmdline-tools:$PATH:$ANDROID_HOME/cmdline-tools/bin
-export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools
+export ANDROID_HOME=$HOME/Android/
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest:$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
+# export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools
 
 # cargo
 export PATH=$PATH:$HOME/.cargo/bin/
@@ -53,11 +53,18 @@ export PATH=$PATH:$HOME/.cargo/bin/
 export PATH="$HOME/.local/bin:$PATH"
 #eval "$(direnv hook zsh)"
 
-fastfetch
-
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Added by LM Studio CLI tool (lms)
 export PATH="$PATH:/home/cy/.lmstudio/bin"
+
+# Homebrew (just to install watchman)
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
+
+# Usage game engine
+export PATH="/home/cy/.usagi/bin:$PATH"
+
+fastfetch
+

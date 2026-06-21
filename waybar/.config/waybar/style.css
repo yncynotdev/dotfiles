@@ -43,7 +43,7 @@ window#waybar.chromium {
 .modules-left,
 .modules-right,
 .modules-center {
-  background-color: @surface;
+  background-color: @base;
   border-radius: 10px;
 }
 

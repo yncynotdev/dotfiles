@@ -39,6 +39,7 @@ vim.o.shiftwidth = 2
 vim.o.smartindent = true
 vim.o.autoindent = true
 vim.opt.swapfile = false
+vim.opt.clipboard = "unnamedplus"
 vim.diagnostic.config({ virtual_text = true })
 
 vim.api.nvim_create_autocmd("ColorScheme", {

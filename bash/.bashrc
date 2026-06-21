@@ -11,3 +11,4 @@
 
 # Added by LM Studio CLI tool (lms)
 export PATH="$PATH:/home/cy/.lmstudio/bin"
+. "$HOME/.cargo/env"

@@ -14,6 +14,9 @@ source $ZSH/oh-my-zsh.sh
 # Aliases
 alias dot="cd ~/dotfiles"
 
+# Bindings
+bindkey -v
+
 # Environment Variables
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
@@ -60,8 +63,6 @@ export PATH="$HOME/.local/bin:$PATH"
 # Added by LM Studio CLI tool (lms)
 export PATH="$PATH:/home/cy/.lmstudio/bin"
 
-# Homebrew (just to install watchman)
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
 
 # Usage game engine
 export PATH="/home/cy/.usagi/bin:$PATH"

@@ -1,0 +1,113 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+[░▒▓](rose)\
+$os\
+[](bg:overlay fg:rose)\
+$directory\
+[](fg:overlay bg:iris)\
+$git_branch\
+$git_status\
+[](fg:iris bg:pine)\
+$nodejs\
+$bun\
+$rust\
+$golang\
+$php\
+[](fg:pine bg:foam)\
+$time\
+[ ](fg:foam)\
+\n$character"""
+
+palette = "rose-pine-dawn"
+
+[palettes.rose-pine-dawn]
+overlay = '#f2e9e1'
+love = '#b4637a'
+gold = '#ea9d34'
+rose = '#d7827e'
+pine = '#286983'
+foam = '#56949f'
+iris = '#907aa9'
+
+[directory]
+style = "fg:iris bg:overlay"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+[git_branch]
+symbol = ""
+style = "bg:overlay"
+format = '[[ $symbol $branch ](fg:overlay bg:iris)]($style)'
+
+[git_status]
+style = "bg:iris"
+format = '[[($all_status$ahead_behind )](fg:overlay bg:iris)]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:foam"
+format = '[[ $symbol ($version) ](fg:iris bg:foam)]($style)'
+
+[bun]
+symbol = ""
+style = "bg:foam"
+format = '[[ $symbol ($version) ](fg:iris bg:foam)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:foam"
+format = '[[ $symbol ($version) ](fg:iris bg:foam)]($style)'
+
+[golang]
+symbol = ""
+style = "bg:pine"
+format = '[[ $symbol ($version) ](fg:overlay bg:pine)]($style)'
+
+[php]
+symbol = ""
+style = "bg:foam"
+format = '[[ $symbol ($version) ](fg:iris bg:foam)]($style)'
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:foam"
+format = '[[  $time ](fg:overlay bg:foam)]($style)'
+
+[os]
+style = "bg:rose fg:overlay"
+format = "[ $symbol ]($style)"
+disabled = false
+
+[os.symbols]
+Windows = "󰍲"
+Ubuntu = "󰕈"
+SUSE = ""
+Raspbian = "󰐿"
+Mint = "󰣭"
+Macos = "󰀵"
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+AOSC = ""
+Arch = "󰣇"
+Artix = "󰣇"
+EndeavourOS = ""
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+Pop = ""
+

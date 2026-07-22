@@ -7,7 +7,10 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 
 # Plugins
-plugins=(git)
+plugins=(
+  git
+  zsh-autosuggestions
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -72,3 +75,5 @@ export PATH="/home/cy/.usagi/bin:$PATH"
 export PATH="/home/cy/.local/bin:$PATH"
 
 fastfetch
+
+eval "$(starship init zsh)"

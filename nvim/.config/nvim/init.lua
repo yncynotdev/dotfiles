@@ -157,6 +157,7 @@ require("lint").linters_by_ft = {
 	javascriptreact = { "biome", "oxlint" },
 	typescriptreact = { "biome", "oxlint" },
 	vue = { "biome", "oxlint" },
+	yaml = { "yamllint" },
 }
 
 -- auto completes
@@ -179,6 +180,7 @@ require("luasnip.loaders.from_vscode").lazy_load()
 vim.lsp.enable({
 	"lua_ls",
 	"biome",
+	"clangd",
 	"csskit",
 	"eslint",
 	"gdscript",

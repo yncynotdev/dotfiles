@@ -9,13 +9,12 @@
 }
 
 window#waybar {
-  /* background-color: transparent; */
-  background-color: @base;
+  background-color: transparent;
+  /* background-color: @base; */
   /* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
   color: @text;
   transition-property: background-color;
   transition-duration: 0.5s;
-  margin: 10rem;
 }
 
 window#waybar.hidden {
@@ -40,12 +39,11 @@ window#waybar.chromium {
   border: none;
 }
 
-.modules-left,
-.modules-right,
-.modules-center {
-  background-color: @base;
-  border-radius: 10px;
-}
+/* .modules-left, */
+/* .modules-right, */
+/* .modules-center { */
+/*   background-color: @base; */
+/* } */
 
 button {
   /* Use box-shadow instead of border so the text isn't offset */
@@ -64,6 +62,12 @@ button:hover {
 /* you can set a style on hover for any module like this */
 #pulseaudio:hover {
   background: rgba(0, 0, 0, 0.2);
+}
+
+#workspaces {
+  background-color: @base;
+  border: 2px solid @pine;
+
 }
 
 #workspaces button {
@@ -88,38 +92,47 @@ button:hover {
 
 #clock,
 #battery,
+#cpu,
 #memory,
 #network,
 #pulseaudio,
-#workspaces {
+#workspaces
+{
+  background-color: @base;
   padding-left: 10px;
   padding-right: 10px;
-  border-radius: 10px;
+  border-radius: 0.5rem;
   color: @text;
 }
 
 #battery {
   color: @love;
-  border-left: 2px solid @love;
+  border: 2px solid @love;
+}
+
+#cpu {
+  color: @rose;
+  border: 2px solid @rose;
 }
 
 #memory {
   color: @gold;
-  border-left: 2px solid @gold;
+  border: 2px solid @gold;
 }
 
 #network {
   color: @foam;
-  border-left: 2px solid @foam;
+  border: 2px solid @foam;
 }
 
 #pulseaudio {
   color: @iris;
-  border-left: 2px solid @iris;
+  border: 2px solid @iris;
 }
 
 #clock {
   color: @text;
+  border: 2px solid @text;
 }
 
 #window,
@@ -139,7 +152,7 @@ button:hover {
 
 #battery.charging,
 #battery.plugged {
-  color: @rose;
+  color: @love;
 }
 
 @keyframes blink {
@@ -160,24 +173,12 @@ button:hover {
   animation-direction: alternate;
 }
 
-
-/* #privacy { */
-/*   padding: 0; */
-/* } */
-/**/
-/* #privacy-item { */
-/*   padding: 0 5px; */
-/*   color: white; */
-/* } */
-/**/
-/* #privacy-item.screenshare { */
-/*   background-color: #cf5700; */
-/* } */
-/**/
-/* #privacy-item.audio-in { */
-/*   background-color: #1ca000; */
-/* } */
-/**/
-/* #privacy-item.audio-out { */
-/*   background-color: #0069d4; */
-/* } */
+#custom-logo {
+  background-color: @base;
+  color: @rose;
+  border-radius: 0.5rem;
+  border: 2px solid @rose;
+  padding-left: 12px;
+  padding-right: 18px;
+  font-size: 18px;
+}

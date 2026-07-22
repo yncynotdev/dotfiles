@@ -47,7 +47,9 @@ export PATH="$PATH:$HOME/flutter/bin"
 # android
 export ANDROID_HOME=$HOME/Android/
 export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest:$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
-# export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools
+
+# clangd
+export PATH=$PATH:$HOME/clangd_22.1.6/bin/
 
 # cargo
 export PATH=$PATH:$HOME/.cargo/bin/
@@ -63,9 +65,10 @@ export PATH="$HOME/.local/bin:$PATH"
 # Added by LM Studio CLI tool (lms)
 export PATH="$PATH:/home/cy/.lmstudio/bin"
 
-
 # Usage game engine
 export PATH="/home/cy/.usagi/bin:$PATH"
 
-fastfetch
+# Added by Antigravity CLI installer
+export PATH="/home/cy/.local/bin:$PATH"
 
+fastfetch

@@ -2,7 +2,16 @@
 {
   "height": 40, // Waybar height (to be removed for auto height)
   "spacing": 4, // Gaps between modules (4px)
+  "margin-top": 8,
+  "margin-left": 12,
+  "margin-right": 12,
+  "custom/logo": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "rofi --show drun"
+  },
   "modules-left": [
+    "custom/logo",
     "hyprland/workspaces",
     "hyprland/mode"
   ],
@@ -13,6 +22,7 @@
     "pulseaudio",
     "network",
     "memory",
+    "cpu",
     "battery"
   ],
   // Modules configuration
@@ -21,6 +31,13 @@
     "all-outputs": true,
     "warp-on-scroll": false,
     "format": "{name}: {icon}",
+    "persistent-workspaces": {
+      "*": [
+        1,
+        2,
+        3
+      ]
+    },
     "format-icons": {
       "active": "",
       "default": ""
@@ -59,7 +76,8 @@
     ]
   },
   "network": {
-    "format-wifi": "    ({bandwidthTotalBytes})",
+    "interface": "wlan0",
+    "format-wifi": "   ↑{bandwidthUpBytes} ↓{bandwidthDownBytes}",
     "format-ethernet": "{ipaddr}/{cidr} ",
     "tooltip-format": "{ifname} via {gwaddr} ",
     "format-linked": "{ifname} (No IP) ",
@@ -68,6 +86,7 @@
   },
   "pulseaudio": {
     "format": "{icon}   {volume}%",
+    "format-muted": "󰝟   {volume}%",
     "format-icons": {
       "headphone": "",
       "hands-free": "",

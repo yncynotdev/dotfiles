@@ -53,18 +53,18 @@ format = '[[($all_status$ahead_behind )](fg:overlay bg:iris)]($style)'
 
 [nodejs]
 symbol = ""
-style = "bg:foam"
-format = '[[ $symbol ($version) ](fg:iris bg:foam)]($style)'
+style = "bg:pine"
+format = '[[ $symbol ($version) ](fg:overlay bg:pine)]($style)'
 
 [bun]
 symbol = ""
-style = "bg:foam"
-format = '[[ $symbol ($version) ](fg:iris bg:foam)]($style)'
+style = "bg:pine"
+format = '[[ $symbol ($version) ](fg:overlay bg:pine)]($style)'
 
 [rust]
 symbol = ""
-style = "bg:foam"
-format = '[[ $symbol ($version) ](fg:iris bg:foam)]($style)'
+style = "bg:pine"
+format = '[[ $symbol ($version) ](fg:overlay bg:pine)]($style)'
 
 [golang]
 symbol = ""
@@ -73,8 +73,8 @@ format = '[[ $symbol ($version) ](fg:overlay bg:pine)]($style)'
 
 [php]
 symbol = ""
-style = "bg:foam"
-format = '[[ $symbol ($version) ](fg:iris bg:foam)]($style)'
+style = "bg:pine"
+format = '[[ $symbol ($version) ](fg:overlay bg:pine)]($style)'
 
 [time]
 disabled = false

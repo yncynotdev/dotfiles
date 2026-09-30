@@ -27,6 +27,7 @@ vim.pack.add({
 vim.g.mapleader = " "
 vim.keymap.set("i", "jj", "<Esc>", { noremap = true, silent = true })
 vim.keymap.set("n", "gl", vim.diagnostic.open_float)
+vim.opt.textwidth = 148 -- Breaks line after 80 characters
 
 -- Vim Config
 vim.o.number = true
@@ -123,6 +124,7 @@ require("conform").setup({
 		typescript = { "biome", "oxfmt", "prettier" },
 		javascriptreact = { "biome", "oxfmt", "prettier" },
 		typescriptreact = { "biome", "oxfmt", "prettier" },
+		markdown = { "markdown_oxide" },
 		vue = { "biome", "oxfmt", "prettier" },
 	},
 	formatters = {
@@ -182,16 +184,21 @@ vim.lsp.enable({
 	"biome",
 	"clangd",
 	"csskit",
-	"eslint",
+	-- "eslint",
 	"gdscript",
 	"gdshader_lsp",
 	"gopls",
+	"gradle_lsp",
 	"html",
+	"java_language_server",
 	"jsonls",
+	"kotlin_lsp",
 	"oxfmt",
 	"oxlint",
+	"markdown_oxide",
 	"postgrestools",
 	"prettier",
+	"pylsp",
 	"rust_analyzer",
 	"stylua",
 	"tailwindcss",

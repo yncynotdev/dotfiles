@@ -66,13 +66,13 @@ export PATH="$HOME/.local/bin:$PATH"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Added by LM Studio CLI tool (lms)
-export PATH="$PATH:/home/cy/.lmstudio/bin"
+export PATH="$PATH:$HOME/.lmstudio/bin"
 
 # Usage game engine
-export PATH="/home/cy/.usagi/bin:$PATH"
+export PATH="$HOME/.usagi/bin:$PATH"
 
 # Added by Antigravity CLI installer
-export PATH="/home/cy/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 fastfetch
 

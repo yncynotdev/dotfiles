@@ -27,6 +27,7 @@ vim.lsp.enable({
 	"biome",
 	"clangd",
 	"csskit",
+	"docker-language-server",
 	"gdscript",
 	"gdshader_lsp",
 	"gopls",

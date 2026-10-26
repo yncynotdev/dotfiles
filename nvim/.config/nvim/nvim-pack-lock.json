@@ -4,6 +4,10 @@
       "rev": "a62e1083a3cfe8b6b206e7d3d33a51091df25357",
       "src": "https://github.com/L3MON4D3/LuaSnip"
     },
+    "astrolsp": {
+      "rev": "41810aa99789c5fcd2480a0e4ba27d3038afdd61",
+      "src": "https://github.com/AstroNvim/astrolsp"
+    },
     "blink.cmp": {
       "rev": "03c11da4349d44ea582c363bc9c75fe0b3a5d2ef",
       "src": "https://github.com/saghen/blink.cmp",
@@ -57,6 +61,18 @@
       "rev": "8cd333aa66e08492d891bdad272208a620cb93a3",
       "src": "https://github.com/nvimtools/none-ls.nvim"
     },
+    "nui.nvim": {
+      "rev": "10fc361835c856ba4233ef5ea135b919bf3dce97",
+      "src": "https://github.com/MunifTanjim/nui.nvim"
+    },
+    "nvim-dap": {
+      "rev": "cfa2d58f4537aca6ca83e2de1a0d9f1491121264",
+      "src": "https://github.com/mfussenegger/nvim-dap"
+    },
+    "nvim-java": {
+      "rev": "db5536b4cb3da153084e50016596fd0e3a319aae",
+      "src": "https://github.com/nvim-java/nvim-java"
+    },
     "nvim-lint": {
       "rev": "eab58b48eb11d7745c11c505e0f3057165902461",
       "src": "https://github.com/mfussenegger/nvim-lint"
@@ -80,6 +96,11 @@
     "plenary.nvim": {
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
       "src": "https://github.com/nvim-lua/plenary.nvim"
+    },
+    "spring-boot.nvim": {
+      "rev": "218c0c26c14d99feca778e4d13f5ec3e8b1b60f0",
+      "src": "https://github.com/JavaHello/spring-boot.nvim",
+      "version": "'218c0c26c14d99feca778e4d13f5ec3e8b1b60f0'"
     },
     "telescope-ui-select.nvim": {
       "rev": "6e51d7da30bd139a6950adf2a47fda6df9fa06d2",
